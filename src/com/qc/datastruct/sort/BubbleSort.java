@@ -30,15 +30,19 @@ public class BubbleSort {
     public static void bubbleSort(int[] arr){
         int temp=0;
         boolean flag=false;
+        int lastChangeIdx=0;
+        int boderIdx=arr.length-1;
         for(int i=0;i<arr.length;i++){
-            for(int j=0;j<arr.length-1;j++){
-                if(arr[i]<arr[j]){
-                    temp=arr[i];
-                    arr[i]=arr[j];
+            for(int j=0;j<boderIdx;j++){
+                if(arr[j+1]<arr[j]){
+                    temp=arr[j+1];
+                    arr[j+1]=arr[j];
                     arr[j]=temp;
                     flag=true;
+                    lastChangeIdx=j;
                 }
             }
+            boderIdx=lastChangeIdx;
             //排序过程中一次也没有交换 flag=false
             if(!flag){
                 break;
